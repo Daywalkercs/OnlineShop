@@ -1,0 +1,27 @@
+﻿@model ShopCartViewModel
+<div class="container">
+
+    <div id="cart-notification-container" class="position-absolute p-3" style="z-index: 1050; top: inherit; right: auto;"></div>
+
+    <div id="cart-container">
+        @if (Model.ShopCart?.ListShopItems != null)
+        {
+            <partial name="CartPartial" model="Model.ShopCart.ListShopItems" />
+        }
+        else
+        {
+            <p>Cart is empty</p>
+        }
+    </div>
+
+    <div id="checkout-button-container">
+        @if (Model.ShopCart != null && Model.ShopCart.ListShopItems.Any())
+        {
+            <hr />
+            <a class="btn btn-success" asp-controller="Order" asp-action="Checkout">Оплатить</a>
+        }
+    </div>
+
+
+
+</div>

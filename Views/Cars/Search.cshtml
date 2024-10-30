@@ -1,0 +1,19 @@
+﻿@model CarsListViewModel
+<h2>@Model.CurrCategory</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <p>@ViewBag.Message</p>
+}
+@if (Model.GetAllCars != null && Model.GetAllCars.Any())
+{
+    <div class="row mt-5 mb-2">
+        @foreach (Car car in Model.GetAllCars)
+        {
+            <partial name="AllCars" model="car" />
+        }
+    </div>
+}
+else
+{
+    <p>No cars available.</p>
+}

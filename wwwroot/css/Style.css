@@ -1,0 +1,18 @@
+﻿body {
+    background: #fcfcfc
+
+}
+
+.custom-margin {
+    margin-top: 5rem !important; /* Увеличиваем отступ сверху */
+    margin-bottom: 6rem !important; /* Увеличиваем отступ снизу */
+}
+
+.custom-notification {
+    width: contain;
+    background-color: lightgreen; /* Цвет фона */
+    font-style: italic;
+    color: black; /* Цвет текста */
+    border: 1px solid dashed; /* Цвет рамки */
+}
+

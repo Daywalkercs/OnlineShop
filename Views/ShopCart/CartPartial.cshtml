@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ShopCartItem>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <div class="cart-item alert alert-warning mt-3">
+            <b>Automobile:</b> @item.Car.CarModel<br />
+            <b>Price:</b> @item.Car.Price.ToString("c")<br />
+            <button class="btn btn-danger btn-remove-from-cart" data-id="@item.Car.Id">Remove from cart</button>
+        </div>
+    }
+}
+else
+{
+    <p>Cart is empty</p>
+}

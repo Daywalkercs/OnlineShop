@@ -1,0 +1,14 @@
+﻿@model Car
+<div class="col-lg-4" style="position: relative">
+    <img class="img-thumbnail" src="@Url.Content(Model.Img)" width="300" alt="@Model.CarModel">
+    <div class="notification-container position-absolute p-lg-5" style="z-index: 1050; left: 0;"></div>
+    <h2>Model: @Model.CarModel</h2>
+    <p>@Model.ShortDescription</p>
+    <p>Price: @Model.Price.ToString("c")</p>
+    <p>
+        <button class="btn btn-warning btn-add-to-cart" data-id="@Model.Id">Add to cart</button>
+    </p>
+
+
+</div>
+

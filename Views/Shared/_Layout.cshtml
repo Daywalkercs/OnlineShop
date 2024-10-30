@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/Style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header data-bs-theme="Dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Alex Gor</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Cars/CarsList" style="color: white">All cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Cars/CarsList/Electro" style="color: white">Electro cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Cars/CarsList/Gas" style="color: white">Gas cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" area-current="page" asp-controller="ShopCart" asp-action="IndexShopCart">Basket</a>
+                        </li>
+                    </ul>
+
+                    <form class="d-flex" asp-controller="Cars" asp-action="Search" method="get" role="search">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="container custom-margin">
+        @RenderBody()
+    </div>
+    <footer class="container">
+        <p class="float-end"><a asp-controller="Home" asp-action="Index">Back to top</a></p>
+        <p>© 2017–2024 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </footer>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="@Url.Content("~/js/cart.js")"></script>
+</body>
+</html>
