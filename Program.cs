@@ -28,6 +28,10 @@ namespace OnlineShop
 
             builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 
+            builder.Services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = 443; // Порт HTTPS по умолчанию
+            });
 
             builder.Services.AddMemoryCache();
             builder.Services.AddSession();
@@ -40,6 +44,8 @@ namespace OnlineShop
             app.UseSession();
             app.UseMvcWithDefaultRoute();
 
+            app.UseHttpsRedirection();
+            app.UseRouting();
 
             app.MapControllerRoute(
                 name: "default",
