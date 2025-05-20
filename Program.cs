@@ -15,7 +15,11 @@ namespace OnlineShop
 
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            // Строка подключения для Render.com
+            var connectionString = Environment.GetEnvironmentVariable("RENDER_SQL_CONNECTION")
+                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
@@ -28,9 +32,14 @@ namespace OnlineShop
 
             builder.Services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            builder.Services.AddHttpsRedirection(options =>
+            //builder.Services.AddHttpsRedirection(options =>
+            //{
+            //    options.HttpsPort = 443; // Порт HTTPS по умолчанию
+            //});
+
+            builder.WebHost.ConfigureKestrel(serverOptions =>
             {
-                options.HttpsPort = 443; // Порт HTTPS по умолчанию
+                serverOptions.ListenAnyIP(5000); // Render использует порт 5000
             });
 
             builder.Services.AddMemoryCache();
@@ -44,7 +53,7 @@ namespace OnlineShop
             app.UseSession();
             app.UseMvcWithDefaultRoute();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseRouting();
 
             app.MapControllerRoute(
