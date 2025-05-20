@@ -5,8 +5,8 @@
     plan: free
     buildCommand: dotnet publish -c Release -o out
     startCommand: dotnet out/OnlineShop.dll
-    autoDeploy: true
     branch: master
+    autoDeploy: true
     envVars:
-      - key: SOMEE_SQL_CONNECTION
+      - key: ConnectionStrings__DefaultConnection
         value: "workstation id=OnlineShopDB.mssql.somee.com;packet size=4096;user id=Raziel_SQLLogin_1;pwd=xrklgywqru;data source=OnlineShopDB.mssql.somee.com;persist security info=False;initial catalog=OnlineShopDB;TrustServerCertificate=True"
