@@ -1,12 +1,9 @@
 ﻿services:
   - type: web
     name: online-shop
-    env: dotnet
+    env: docker
     plan: free
-    buildCommand: dotnet publish -c Release -o out
-    startCommand: dotnet out/OnlineShop.dll
     branch: master
+    rootDir: .
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
-    envVars:
-      - key: ConnectionStrings__DefaultConnection
-        value: "workstation id=OnlineShopDB.mssql.somee.com;packet size=4096;user id=Raziel_SQLLogin_1;pwd=xrklgywqru;data source=OnlineShopDB.mssql.somee.com;persist security info=False;initial catalog=OnlineShopDB;TrustServerCertificate=True"
